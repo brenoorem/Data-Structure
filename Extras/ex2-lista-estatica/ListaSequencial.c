@@ -49,3 +49,40 @@ int insere_lista_final(Lista *li, struct aluno al){
     li->qtd++;
     return 1;
 }
+
+int insere_lista_incio(Lista *li, struct aluno al){
+    if(li == NULL)
+        return 0;
+    if(lista_cheia(li))
+        return 0;
+    
+    int i;
+
+    for(i=li->qtd-1;i>=0;i--){
+        li->dados[i+1] = li->dados[i];
+    }
+
+    li->dados[0] = al;
+    li->qtd++;
+
+    return 1;
+}
+
+int insere_lista_ordenada(Lista *li, struct aluno al){
+    if(li == NULL)
+        return 0;
+    if(lista_cheia(li))
+        return 0;
+    
+    int i = 0, k;
+
+    while(i<li->qtd && li->dados[i].matricula < al.matricula)
+        i++;
+
+    for(k=li->qtd-1;k>=i;k--)
+        li->dados[k+1] = li->dados[k];
+
+    li->dados[i] = al;
+    li->qtd++;
+    return 1;
+}
