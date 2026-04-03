@@ -6,11 +6,6 @@ struct aluno{
     float n1, n2, n3;
 };
 
-struct Lista{
-    int qtd;
-    struct aluno dados[MAX];
-};
-
 typedef struct Lista Lista;
 
 Lista *cria_lista();
